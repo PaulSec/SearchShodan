@@ -26,11 +26,7 @@ def search_shodan(cmd, max_thread, limit):
             nb_pages = math.ceil(int(results['total']) / 100.0)
         else:
             min_res = min(int(results['total']), int(limit))
-         #   print min_res
             nb_pages = math.ceil(min_res / 100.0)
-
-        #print "nb pages : " + str(nb_pages)
-        #raw_input()
 
         ShodanAPI().set_results(results)
         
@@ -44,7 +40,6 @@ def search_shodan(cmd, max_thread, limit):
             i = i + 1
 
             # result should be equal but to be sure >=
-            # print threads
             if ((i-1) >= max_thread):
                 for thread in threads:
                     thread.join()
